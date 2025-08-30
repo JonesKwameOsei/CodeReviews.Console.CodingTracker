@@ -106,7 +106,7 @@ internal class DataAccess
         connection.Execute("DELETE FROM sqlite_sequence WHERE name = 'codingSessions';");
     }
 
-    internal void UpdateRecord(CodingRecord updateRecord)
+    internal void UpdateRecord(CodingRecord newRecord)
     {
         using var connection = new SqliteConnection(ConnectionString);
         connection.Open();
@@ -118,10 +118,10 @@ internal class DataAccess
 
         connection.Execute(updateQuery, new
         {
-            updateRecord.Language,
-            updateRecord.DateStart,
-            updateRecord.DateEnd,
-            updateRecord.Id
+            newRecord.Language,
+            newRecord.DateStart,
+            newRecord.DateEnd,
+            newRecord.Id
         });
     }
 
